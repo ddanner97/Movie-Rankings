@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import SearchMovieForm from '../components/SearchMovieForm'
 
@@ -9,20 +9,24 @@ function DiscoverScreen() {
   const [searchList, setSearchList] = useState([])
 
   return (
-    <div>
+    <div className='discover-screen'>
 
         <SearchMovieForm setSearchList={setSearchList}/>
 
-        <div className="search-list-container">
+        <div className="search-list-container my-2">
             {/* Render tasks */}
             {searchList.map((movie, index) => 
-                    <DiscoverMovieCard 
-                      poster={movie.poster_path} 
-                      title={movie.title}
-                      id={movie.id}
-                      key={index}
-                    />
-                  )}
+
+             
+                <DiscoverMovieCard 
+                poster={movie.poster_path} 
+                title={movie.title}
+                release={movie.release_date}
+                id={movie.id}
+                key={index}
+                />
+                   
+            )}
         </div>
 
     </div>
