@@ -6,7 +6,9 @@ function SearchMovieForm(props) {
 
   const [movie, setMovie] = useState('')
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_api_key}&query=${movie}`
     )
@@ -21,10 +23,10 @@ function SearchMovieForm(props) {
   }
     
   return (
-    <div className='mx-auto max-w-screen-lg flex border-2 border-white'>
+    <form className='mx-auto max-w-screen-lg flex border-2 border-white' onSubmit={handleSubmit}>
         <input className='bg-secondary border-r-2 grow px-4' type="text" placeholder="Search Movie" value={movie} onChange={(e) => setMovie(e.target.value)} />
-        <button className='px-4 py-2' onClick={() => handleSubmit()}><SearchIcon/></button>
-    </div>
+        <button className='px-4 py-2' type='submit' value='submit'><SearchIcon/></button>
+    </form>
   )
 }
 
