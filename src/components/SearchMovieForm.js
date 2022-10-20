@@ -11,7 +11,8 @@ function SearchMovieForm(props) {
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_api_key}&query=${movie}`
     )
     .then(res => res.json())
-    .then(resp => props.setSearchList(resp.results))
+    .then(resp => resp.results.filter(movie => movie.poster_path != null)) //Filter out movies without a poster
+    .then(response => props.setSearchList(response)) 
     .catch((error) => {
         console.error("there has been an issue", error)
     })
