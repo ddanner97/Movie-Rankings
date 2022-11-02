@@ -17,13 +17,12 @@ function DiscoverScreen() {
             {/* Render tasks */}
             {searchList.map((movie, index) => 
 
-             
                 <DiscoverMovieCard 
-                poster={movie.poster_path} 
-                title={movie.title}
-                release={movie.release_date}
-                id={movie.id}
-                key={index}
+                  poster={movie.poster_path} 
+                  title={movie.title}
+                  release={movie.release_date}
+                  id={movie.id}
+                  key={index}
                 />
                    
             )}

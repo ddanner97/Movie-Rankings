@@ -1,10 +1,26 @@
 import React from 'react'
 
-function ListScreen() {
-  return (
-    <div className=''>
+import ListMovieCard from '../components/ListMovieCard'
 
-        <h1 className='mx-auto'>My Movies</h1>
+function ListScreen(props) {
+  return (
+    <div className='list-screen-container'>
+
+        <h1 className='mx-auto text-align-center'>My Movies</h1>
+
+        {!!props.movieListDetails.length &&
+
+          <div className="movie-list-container">
+            {/*render user movie list*/}
+            {props.movieListDetails.map((movie, index) => 
+              <ListMovieCard
+                poster={movie.poster_path}
+                rating={movie.user_rating}
+                key={index} 
+              />
+            )}
+          </div>
+        }
 
     </div>
   )

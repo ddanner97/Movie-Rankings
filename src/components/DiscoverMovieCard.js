@@ -3,7 +3,6 @@ import React from 'react'
 function DiscoverMovieCard(props) {
 
   const release = new Date(props.release)
-  console.log(release)
 
   return (
     <div className='discover-movie-card flex py-2 border-b-2 border-black-700'>
