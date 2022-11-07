@@ -10,7 +10,7 @@ function ListScreen(props) {
 
         {!!props.movieListDetails.length &&
 
-          <div className="movie-list-container">
+          <div className="movie-list-container grid">
             {/*render user movie list*/}
             {props.movieListDetails.map((movie, index) => 
               <ListMovieCard

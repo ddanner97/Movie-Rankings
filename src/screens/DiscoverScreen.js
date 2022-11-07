@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react'
 import SearchMovieForm from '../components/SearchMovieForm'
 
 import DiscoverMovieCard from '../components/DiscoverMovieCard'
+import RatingForm from '../components/RatingForm'
 
-function DiscoverScreen() {
+function DiscoverScreen(props) {
 
   const [searchList, setSearchList] = useState([])
+  const [movieId, setMovieId] = useState()
 
   return (
-    <div className='discover-screen'>
+    <div className='discover-screen relative'>
 
         <SearchMovieForm setSearchList={setSearchList}/>
 
@@ -23,10 +25,17 @@ function DiscoverScreen() {
                   release={movie.release_date}
                   id={movie.id}
                   key={index}
+                  setMovieId={setMovieId}
                 />
                    
             )}
         </div>
+
+        {/* Conditionally Render Rating Form */}
+        {movieId !== undefined &&
+          <RatingForm setMovieId={setMovieId} movieId={movieId} movieList={props.movieList} setMovieList={props.setMovieList} setScreen={props.setScreen}/>
+        } 
+        
 
     </div>
   )

@@ -11,7 +11,7 @@ function DiscoverMovieCard(props) {
             <h2 className=''>{props.title}</h2>
             <div className='flex relative'>
                 <h2 className='grow '>{release.toDateString().split(' ').slice(1).join(' ')}</h2>
-                <button className='absolute right-0 text-5xl border-2 border-yellow-500 text-yellow-500 rounded-md px-2'>+</button>
+                <button onClick={() => props.setMovieId(props.id)} className='absolute right-0 text-5xl border-2 border-yellow-500 text-yellow-500 rounded-md px-2'>+</button>
             </div>
         </div>
         
