@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { readData } from './jsonBinUtils';
+import React, { useEffect, useState, useRef } from 'react';
+import { readData, updateData } from './jsonBinUtils';
 import './main.css'
 
 //Components
@@ -20,6 +20,7 @@ function App() {
 
   //Make calls to TMBD to get movie details
   useEffect(() => {
+
     //Empty array and remove first element from MovieList [with JSON bin db]
     setMovieListDetails([])
     const movieArray = movieList.slice(1)
@@ -38,6 +39,9 @@ function App() {
       })
     })
 
+    // Update list when state changes
+    return () => updateData(movieList)
+
   }, [movieList])
 
   return (
@@ -45,7 +49,7 @@ function App() {
 
       <div className='main-container relative flex flex-column relative text-white bg-secondary w-full lg:max-w-screen-lg mx-auto min-h-screen'>
         <div className='parent-screen-containers grow px-4 pt-4'>
-          {screen ? <ListScreen movieListDetails={movieListDetails} /> : <DiscoverScreen /> }
+          {screen ? <ListScreen movieListDetails={movieListDetails} /> : <DiscoverScreen movieList={movieList} setMovieList={setMovieList} setScreen={setScreen}/> }
         </div>
 
         <BottomNav setScreen={setScreen} />    
